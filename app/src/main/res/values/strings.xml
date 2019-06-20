@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">FormSampleRx</string>
+    <string name="empty"></string>
+    <string name="male">男性</string>
+    <string name="female">女性</string>
+    <string name="nickname">ニックネーム</string>
+    <string name="sex">性別</string>
+    <string name="birthday">生年月日</string>
+    <string name="ok">OK</string>
+    <string name="regist">登録</string>
+    <string name="regist_complete">登録完了</string>
+    <string name="agree">利用規約に同意します</string>
+</resources>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+                name="activity"
+                type="com.example.formsamplerx.MainActivity" />
+    </data>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+        <LinearLayout
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:descendantFocusability="beforeDescendants"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="@string/nickname"
+                    android:textColor="#8d9399"
+                    android:textSize="12sp"/>
+
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:maxEms="15"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:text="@={activity.properties.nickname}"
+                    android:textColor="#788086"
+                    android:textSize="16sp" />
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@{activity.properties.isValidNickNameField ? @android:color/holo_green_dark : @android:color/darker_gray}" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="24dp"
+                    android:text="@string/ok"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:visibility="@{activity.properties.isValidNickNameField ? View.VISIBLE : View.INVISIBLE}"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:onClick="@{() -> activity.onGenderClicked()}"
+                    android:text="@string/sex"
+                    android:textColor="#8d9399"
+                    android:textSize="12sp"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:enabled="false"
+                    android:maxEms="12"
+                    android:onClick="@{() -> activity.onGenderClicked()}"
+                    android:text="@{activity.properties.genderValueField == null ? @string/empty  : (activity.properties.genderValueField ? @string/male : @string/female)}"
+                    android:textColor="#788086"
+                    android:textSize="16sp" />
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@{activity.properties.isValidGenderField ? @android:color/holo_green_dark : @android:color/darker_gray}" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="24dp"
+                    android:text="@string/ok"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:visibility="@{activity.properties.isValidGenderField ? View.VISIBLE : View.INVISIBLE}"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:onClick="@{() -> activity.onBirthdayClicked()}"
+                    android:text="@string/birthday"
+                    android:textColor="#8d9399"
+                    android:textSize="12sp"/>
+
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:enabled="false"
+                    android:maxEms="12"
+                    android:maxLines="1"
+                    android:onClick="@{() -> activity.onBirthdayClicked()}"
+                    android:text="@={activity.properties.birthdayValueField}"
+                    android:textColor="#788086"
+                    android:textSize="16sp" />
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@{activity.properties.isValidBirthdayField ? @android:color/holo_green_dark : @android:color/darker_gray}" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="@string/ok"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:visibility="@{activity.properties.isValidBirthdayField ? View.VISIBLE : View.INVISIBLE}"/>
+
+            <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="32dp"
+                    android:layout_marginTop="32dp"
+                    android:button="@drawable/checkbox_multi"
+                    android:onClick="@{(v) -> activity.properties.onCheckedChanged(v)}"
+                    android:padding="16dp"
+                    android:text="@string/agree"
+                    android:textColor="#8d9399"
+                    android:textSize="12sp"/>
+
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="4dp"
+                    android:background="@{activity.properties.canRegister ? @android:color/holo_green_dark : @android:color/darker_gray}"
+                    android:clickable="@{activity.properties.canRegister ? true : false}"
+                    android:enabled="@{activity.properties.canRegister ? true : false}"
+                    android:gravity="center"
+                    android:onClick="@{() -> activity.register()}"
+                    android:text="@string/regist"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
